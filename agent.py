@@ -63,10 +63,10 @@ def orchestrate_story_to_image(user_input, csv_path="groq_outputs.csv"):
     bg_desc = parsed.get("background_description", "")
 
     char_img_prompt = image_agent([
-        HumanMessage(content=f"Create a highly detailed and visually rich image generation prompt. The prompt should help an AI image generation tool visualize the description below. Description: {char_desc}.Make sure it's realistic, vivid, and suitable for image generation.")]).content.strip()
+        HumanMessage(content=f"Create a highly detailed and visually rich image generation prompt. The prompt should help an AI image generation tool visualize the description below. Description: {char_desc}.Make sure it's realistic, vivid, and suitable for image generation in 80 words paragraph")]).content.strip()
 
     bg_img_prompt = image_agent([
-        HumanMessage(content=f"Create a highly detailed and visually rich image generation prompt. The prompt should help an AI image generation tool visualize the description below. Description: {bg_desc}.Make sure it's realistic, vivid, and suitable for image generation.")
+        HumanMessage(content=f"Create a highly detailed and visually rich image generation prompt. The prompt should help an AI image generation tool visualize the description below. Description: {bg_desc}.Make sure it's realistic, vivid, and suitable for image generation in 80 words paragraph")
     ]).content.strip()
 
     # Step 3: Save all results into CSV
