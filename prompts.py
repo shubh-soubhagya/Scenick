@@ -100,8 +100,10 @@ def generate_image_prompt(description, type_):
     Create a highly detailed and visually rich image generation prompt for a {type_}.
     The prompt should help an AI image generation tool visualize the description below.
     Description: {description}
-    Make sure it's realistic, vivid, and suitable for image generation.
+    Ensure it is realistic, vivid, and suitable for image generation, within 50 words.
+    If the subject is a character or person, ensure they do not occupy the entire image space.
     """
+
     resp = image_agent([HumanMessage(content=prompt)])
     return resp.content.strip()
 
