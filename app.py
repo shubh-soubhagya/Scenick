@@ -1,12 +1,39 @@
-# app.py
 from datetime import datetime
 import csv
 import cv2
 import numpy as np
+import speech_recognition as sr
 from agents.story import generate_story
 from agents.prompt import generate_image_prompt
 from img_agents.imagegen import generate_images_from_csv
 from combine import remove_bg, overlay_same_size
+
+def listen_for_input():
+    """
+    Uses microphone to capture user speech and return recognized text.
+    """
+    recognizer = sr.Recognizer()
+    mic = sr.Microphone()
+
+    print("🎤 Adjusting for background noise... Please wait.")
+    with mic as source:
+        recognizer.adjust_for_ambient_noise(source, duration=1)
+
+    print("🎤 Listening... Speak now.")
+    with mic as source:
+        try:
+            audio = recognizer.listen(source, timeout=None, phrase_time_limit=5)
+            speech_text = recognizer.recognize_google(audio)
+            print(f"✅ You said: {speech_text}")
+            return speech_text.strip()
+        except sr.WaitTimeoutError:
+            print("⚠️ No speech detected.")
+        except sr.UnknownValueError:
+            print("⚠️ Could not understand audio.")
+        except sr.RequestError:
+            print("⚠️ Speech recognition service error.")
+
+    return ""
 
 def orchestrate_story_to_image(user_input, csv_path="groq_outputs.csv"):
     # Step 1 → Story and descriptions
@@ -50,12 +77,24 @@ def orchestrate_story_to_image(user_input, csv_path="groq_outputs.csv"):
 
     # Save and show
     cv2.imwrite("combined_result.png", final_img)
-    # cv2.imshow("Combined", final_img)
-    # cv2.waitKey(2000)
-    # cv2.destroyAllWindows()
 
 
 # Example run
 if __name__ == "__main__":
-    user_idea = input("Enter your story idea: ").strip()
+    print("Choose input method:")
+    print("1 → Type your story idea")
+    print("2 → Speak your story idea")
+    choice = input("Enter 1 or 2: ").strip()
+
+    if choice == "1":
+        user_idea = input("✍️ Enter your story idea: ").strip()
+    elif choice == "2":
+        user_idea = listen_for_input()
+        if not user_idea:
+            print("⚠️ No valid speech detected. Exiting.")
+            exit()
+    else:
+        print("⚠️ Invalid choice. Exiting.")
+        exit()
+
     orchestrate_story_to_image(user_idea)
