@@ -7,12 +7,14 @@ from diffusers import StableDiffusionPipeline
 custom_model_path = r"models_cpu"
 model_id = "runwayml/stable-diffusion-v1-5"
 
+
 pipe = StableDiffusionPipeline.from_pretrained(
     model_id,
     torch_dtype=torch.float32,  # CPU-friendly
     use_safetensors=True,
     cache_dir=custom_model_path
 ).to("cpu")
+
 
 def generate_image(prompt: str, output_path: str, seed: int = 42):
     """
@@ -30,6 +32,7 @@ def generate_image(prompt: str, output_path: str, seed: int = 42):
     ).images[0]
     image.save(output_path)
     return output_path
+
 
 def generate_images_from_csv(csv_path: str, output_dir: str = "generated_images"):
     """
