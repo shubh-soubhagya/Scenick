@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenick - Story to Image</title>
+    <link rel="stylesheet" href="{% static 'storyapp/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Scenick</h1>
+        <p>Transform your story ideas into visual scenes</p>
+        
+        <div class="input-section">
+            <textarea id="story-input" placeholder="Enter your story idea or use voice input"></textarea>
+            <div class="button-group">
+                <button id="voice-btn" class="btn voice-btn">🎤 Voice Input</button>
+
+                <button id="generate-btn" class="btn generate-btn">Generate Scene</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="hidden">
+            <div class="image-pyramid">
+                <div class="top-image">
+                    <img id="combined-img" src="" alt="Combined Scene">
+                    <div class="story-text" id="story-text"></div>
+                </div>
+                <div class="connector-lines">
+                    <div class="line left-line"></div>
+                    <div class="line right-line"></div>
+                </div>
+                <div class="bottom-images">
+                    <div class="image-box">
+                        <img id="char-img" src="" alt="Character">
+                        <div class="description-box">
+                            <h3>Character Description</h3>
+                            <p id="char-desc"></p>
+                            <h3>Character Prompt</h3>
+                            <p id="char-prompt"></p>
+                        </div>
+                    </div>
+                    <div class="image-box">
+                        <img id="bg-img" src="" alt="Background">
+                        <div class="description-box">
+                            <h3>Background Description</h3>
+                            <p id="bg-desc"></p>
+                            <h3>Background Prompt</h3>
+                            <p id="bg-prompt"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'storyapp/js/script.js' %}"></script>
+</body>
+</html>
