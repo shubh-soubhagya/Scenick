@@ -23,7 +23,13 @@ def generate_image(prompt: str, output_path: str, seed: int = 42):
     generator = torch.manual_seed(seed)
     image = pipe(
         prompt=prompt,
-        negative_prompt="bad hands, low quality, blurry, extra limbs, text, watermark",
+        # negative_prompt="bad hands, low quality, blurry, extra limbs, text, watermark",
+        negative_prompt = (
+            "cartoon, anime, 3d render, low quality, low resolution, blurry, out of focus, "
+            "extra fingers, mutated hands, bad hands, missing fingers, distorted face, "
+            "unnatural skin texture, bad anatomy, deformed, disfigured, blurry background, "
+            "text, watermark, grainy, overexposed, underexposed, unnatural lighting"
+        ),
         num_inference_steps=20,
         guidance_scale=9,
         width=512,
