@@ -1,6 +1,6 @@
 # Scenick - AI Story to Image Generator
 
-Transform text stories into visual scenes with AI-powered character and background generation using Groq models and Stable Diffusion Model.
+Transform text narratives into immersive visual scenes with Scenick - an AI-powered platform that automatically generates characters and backgrounds using cutting-edge Groq language models and Stable Diffusion image generation.
 
 ## Features
 
@@ -10,6 +10,19 @@ Transform text stories into visual scenes with AI-powered character and backgrou
 - 🎨 Combined scene composition
 - ⚡ Fast inference with Groq's LPU technology
 
+### Usage
+1. Enter your story idea or use voice input
+2. Click "Generate Scene"
+3. View your:
+  - Generated story
+  - Character description
+  - Background Description
+  - Combined scene image
+  - Character Image
+  - Background Image
+  - Character Prompt
+  - Background Prompt
+
 ## Technology Stack
 
 - **Backend**: Django
@@ -17,7 +30,7 @@ Transform text stories into visual scenes with AI-powered character and backgrou
     - `llama-3.1-8b-instant` and `compound-beta-mini` for text generation
     - `runwayml/stable-diffusion-v1-5` for image generation
 - **Frontend**: HTML, CSS, JavaScript
-- **Audio**: Google Speech Recognition
+- **Audio**: Google's `speech_recognition`
 - **Image Processing**: OpenCV and `mediapipe` for bg remover.
 
 ## Setup Instructions
@@ -32,7 +45,7 @@ Transform text stories into visual scenes with AI-powered character and backgrou
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/scenick.git
+   git clone https://github.com/shubh-soubhagya/scenick.git
    cd scenick
 
 2. **Set up virtual environment**
@@ -44,16 +57,13 @@ Transform text stories into visual scenes with AI-powered character and backgrou
     source venv/bin/activate
 
 3. **Install Dependencies**
-    ```bash
-    python -m venv venv
-    # Windows:
-    .\venv\Scripts\activate
-    # Mac/Linux:
-    source venv/bin/activate
-
-4. **Install Dependencies**
     ```bash 
     pip install -r requirements.txt
+
+4. **Set up environment variables**: Create a .env file:
+    ```bash
+    GROQ_API_KEY=your_api_key_here
+    ```
 
 5. **Database Setup**
     ```bash
@@ -72,7 +82,7 @@ Transform text stories into visual scenes with AI-powered character and backgrou
     GROQ_API_KEY=your_api_key_here
     ```
 
-## Project Structure
+## Design Architecture Structure
 ```bash
 Scenick/
 ├── agents/
@@ -119,15 +129,24 @@ Scenick/
 └── README.md
 ```
 
-### Usage
-1. Enter your story idea or use voice input
-2. Click "Generate Scene"
-3. View your:
-  - Generated story
-  - Character description
-  - Background Description
-  - Combined scene image
-  - Character Image
-  - Background Image
-  - Character Prompt
-  - Background Prompt
+### Key Directories and Files
+
+- **agents/**: Contains scripts for story generation and prompts
+  - `prompt.py`: Handles prompt generation
+  - `story.py`: Manages story and description creation logic
+- **img_agents/**: Contains image generation components
+  - `combine.py`: Combines generated images
+  - `imagegen.py`: Handles image generation
+- **scenick/**: Django project configuration
+  - Core settings and URL configurations
+- **storyapp/**: Django application
+  - `models.py`: Database models
+  - `views.py`: Application logic
+  - `static/`: CSS and JavaScript files
+  - `templates/`: HTML templates
+- **generated_images/**: Stores output images
+- **root files**:
+  - `manage.py`: Django management script
+  - `app.py`: Script to run in CLI
+  - `.env`: Environment variables
+  - `requirements.txt`: Python dependencies
