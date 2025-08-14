@@ -2,8 +2,8 @@
 
 Transform text narratives into immersive visual scenes with Scenick - an AI-powered platform that automatically generates characters and backgrounds using cutting-edge Groq language models and Stable Diffusion image generation.
 
-**Prompt Enginnering Documentaion**: [PDF](/Prompt engineering documentation.pdf)
-**Output Examples**: [`generated_images/` directory](/generated_images/)  
+Prompt Enginnering Documentaion: [PDF](/Prompt engineering documentation.pdf)
+Output Examples: [`generated_images/` directory](/generated_images/)  
 
 ## Features
 
