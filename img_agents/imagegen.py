@@ -25,7 +25,7 @@ def generate_image(prompt: str, output_path: str, seed: int = 42):
         prompt=prompt,
         # negative_prompt="bad hands, low quality, blurry, extra limbs, text, watermark",
         negative_prompt = (
-            "cartoon, anime, 3d render, low quality, low resolution, blurry, out of focus, "
+            "cartoon, anime, NSFW, 3d render, low quality, low resolution, blurry, out of focus, "
             "extra fingers, mutated hands, bad hands, missing fingers, distorted face, "
             "unnatural skin texture, bad anatomy, deformed, disfigured, blurry background, "
             "text, watermark, grainy, overexposed, underexposed, unnatural lighting"
