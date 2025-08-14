@@ -10,19 +10,6 @@ Transform text narratives into immersive visual scenes with Scenick - an AI-powe
 - 🎨 Combined scene composition
 - ⚡ Fast inference with Groq's LPU technology
 
-### Usage
-1. Enter your story idea or use voice input
-2. Click "Generate Scene"
-3. View your:
-  - Generated story
-  - Character description
-  - Background Description
-  - Combined scene image
-  - Character Image
-  - Background Image
-  - Character Prompt
-  - Background Prompt
-
 ## Technology Stack
 
 - **Backend**: Django
