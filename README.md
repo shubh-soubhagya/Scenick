@@ -2,6 +2,9 @@
 
 Transform text narratives into immersive visual scenes with Scenick - an AI-powered platform that automatically generates characters and backgrounds using cutting-edge Groq language models and Stable Diffusion image generation.
 
+**Prompt Enginnering Documentaion**: [PDF](/Prompt engineering documentation.pdf)
+**Output Examples**: [`generated_images/` directory](/generated_images/)  
+
 ## Features
 
 - 🎙️ Voice or text input for story ideas
@@ -65,6 +68,7 @@ Transform text narratives into immersive visual scenes with Scenick - an AI-powe
 ### Configuration
 1. Get your API key from [Groq Cloud](https://console.groq.com/keys)
 2. Add it to your `.env` file:
+
     ```bash
     GROQ_API_KEY=your_api_key_here
     ```
